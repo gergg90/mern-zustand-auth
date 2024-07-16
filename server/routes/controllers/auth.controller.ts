@@ -16,4 +16,10 @@ export class AuthController {
     );
     res.status(201).json({ token });
   };
+
+  static profileHandler = (req: Request, res: Response) => {
+    const payload = req.payload;
+
+    res.json({ payload });
+  };
 }

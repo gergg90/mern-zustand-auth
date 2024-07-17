@@ -7,11 +7,11 @@ export class AuthController {
 
     const token = jwt.sign(
       {
-        test: "test",
+        result,
       },
       "secret",
       {
-        expiresIn: 1000 * 60 * 60,
+        expiresIn: 1000 * 60 * 2,
       }
     );
     res.status(201).json({ token });
@@ -20,6 +20,11 @@ export class AuthController {
   static profileHandler = (req: Request, res: Response) => {
     const payload = req.payload;
 
-    res.json({ payload });
+    return res.json({
+      profile: {
+        username: req.payload,
+      },
+      message: "Profile retrieved successfully",
+    });
   };
 }

@@ -10,18 +10,19 @@ export const requireAuth = (
 
   if (!authHeader)
     return res.status(401).json({
-      message: "Unauthorized",
+      message: "Unauthorized no header",
     });
 
   const token = authHeader.split(" ")[1];
 
   if (!token)
     return res.status(401).json({
-      message: "Unauthorized",
+      message: "Unauthorized no token",
     });
 
   jwt.verify(token, "secret", (err, payload) => {
-    if (err) return res.status(403).json({ message: "Forbidden" });
+    if (err)
+      return res.status(403).json({ message: "Unauthorized invalid token" });
 
     req.payload = payload;
 

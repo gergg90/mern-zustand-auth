@@ -1,3 +1,4 @@
+import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import z from "zod";
@@ -24,7 +25,11 @@ function LoginPage() {
     console.log(values);
   };
 
-  return <div>LoginPage</div>;
+  return (
+    <Form {...form}>
+      <form action=""></form>
+    </Form>
+  );
 }
 
 export default LoginPage;

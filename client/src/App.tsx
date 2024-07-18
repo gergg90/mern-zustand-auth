@@ -1,6 +1,5 @@
 import { ModeToggle } from "./components/mode-toggle";
 import { ThemeProvider } from "./components/theme-provider";
-import { Button } from "./components/ui/button";
 import LoginPage from "./pages/LoginPage";
 
 function App() {
@@ -15,7 +14,6 @@ function App() {
           <main className="col-span-2">
             <div className="flex flex-col items-center justify-center">
               <LoginPage />
-              <Button>Click</Button>
             </div>
           </main>
           <footer className="col-span-2">

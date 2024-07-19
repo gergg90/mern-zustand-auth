@@ -1,3 +1,4 @@
+import { loginRequest } from "@/apis/auth";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -29,8 +30,10 @@ function LoginPage() {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const { email, password } = values;
+    const resLogin = await loginRequest(email, password);
+    console.log(resLogin);
   };
 
   return (

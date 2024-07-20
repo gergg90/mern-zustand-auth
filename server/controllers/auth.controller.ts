@@ -22,7 +22,7 @@ export class AuthController {
 
     return res.json({
       profile: {
-        username: req.payload,
+        username: payload,
       },
       message: "Profile retrieved successfully",
     });

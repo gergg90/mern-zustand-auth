@@ -9,9 +9,12 @@ interface Actions {
   setToken: (token: string) => void;
 }
 
-const storeAPIAuth: StateCreator<State & Actions> = (set) => ({
+const storeAPIAuth: StateCreator<
+  State & Actions,
+  [["zustand/devtools", never]]
+> = (set) => ({
   token: "",
-  setToken: (token: string) => set((state) => ({ token })),
+  setToken: (token: string) => set({ token }),
 });
 
 export const useAuthStore = create<State & Actions>()(

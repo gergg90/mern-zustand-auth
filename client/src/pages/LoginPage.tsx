@@ -1,4 +1,4 @@
-import { loginRequest } from "@/apis/auth";
+import { profileRequest } from "@/apis/auth";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -23,6 +23,7 @@ const formSchema = z.object({
 });
 
 function LoginPage() {
+  const token = useAuthStore((state) => state.token);
   const setToken = useAuthStore((state) => state.setToken);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -34,11 +35,13 @@ function LoginPage() {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    const { email, password } = values;
-    const resLogin = await loginRequest(email, password);
-    const fetchToken = resLogin.data.token;
+    // const { email, password } = values;
+    // const resLogin = await loginRequest(email, password);
+    // const fetchToken = resLogin.data.token;
+    const resRequest = await profileRequest(token);
+    console.log(resRequest);
 
-    setToken(fetchToken);
+    // setToken(fetchToken);
   };
 
   return (

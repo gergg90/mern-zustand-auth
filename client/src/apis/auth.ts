@@ -12,3 +12,10 @@ export const loginRequest = async (email: string, password: string) => {
 
   return data;
 };
+
+export const profileRequest = async (token: string) => {
+  const data = await baseApi.get("/profile", {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return data;
+};

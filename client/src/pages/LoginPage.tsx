@@ -45,7 +45,9 @@ function LoginPage() {
 
     const resProfile = await profileRequest();
 
-    setProfile(resProfile.data.profile);
+    console.log(resProfile.data.profile.username.result);
+
+    setProfile(resProfile.data.profile.username.result);
 
     navigate("/profile");
   };

@@ -1,11 +1,7 @@
-import axios from "axios";
-
-export const baseApi = axios.create({
-  baseURL: "http://localhost:3000/auth",
-});
+import { authAPI } from "@/lib/axios";
 
 export const loginRequest = async (email: string, password: string) => {
-  const data = await baseApi.post("/login", {
+  const data = await authAPI.post("/login", {
     email,
     password,
   });
@@ -13,9 +9,7 @@ export const loginRequest = async (email: string, password: string) => {
   return data;
 };
 
-export const profileRequest = async (token: string) => {
-  const data = await baseApi.get("/profile", {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+export const profileRequest = async () => {
+  const data = await authAPI.get("/profile");
   return data;
 };

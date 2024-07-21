@@ -1,29 +1,27 @@
+import { Outlet } from "react-router-dom";
 import { ModeToggle } from "./components/mode-toggle";
 import { ThemeProvider } from "./components/theme-provider";
-import LoginPage from "./pages/LoginPage";
+import Footer from "./shared/components/Footer";
+import NavBar from "./shared/components/NavBar";
 
 function App() {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto my-5">
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-2 gap-2">
           {" "}
           <header className="col-span-2">
-            <div className="flex justify-between items-center">
-              //! Navbar
+            <div className="flex justify-between items-center ">
+              <NavBar />
               <ModeToggle />
             </div>
           </header>
           <main className="col-span-2">
             <div className="flex flex-col items-center justify-center">
-              <LoginPage />
+              <Outlet />
             </div>
           </main>
-          <footer className="col-span-2">
-            <div className="flex items-center justify-center ">
-              <p>Footer</p>
-            </div>
-          </footer>
+          <Footer />
         </div>
       </ThemeProvider>
     </div>

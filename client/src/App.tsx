@@ -9,7 +9,10 @@ function App() {
         <div className="grid grid-cols-2">
           {" "}
           <header className="col-span-2">
-            <ModeToggle />
+            <div className="flex justify-between items-center">
+              //! Navbar
+              <ModeToggle />
+            </div>
           </header>
           <main className="col-span-2">
             <div className="flex flex-col items-center justify-center">

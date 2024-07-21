@@ -1,4 +1,5 @@
 import App from "@/App";
+import ProtectedRoute from "@/components/ProtectedRoute";
 import DocumentationPage from "@/pages/DocumentationPage";
 import HomePage from "@/pages/HomePage";
 import LoginPage from "@/pages/LoginPage";
@@ -25,7 +26,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "profile",
-        element: <ProfilePage />,
+        element: (
+          <ProtectedRoute>
+            <ProfilePage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "docs",

@@ -4,11 +4,13 @@ import { devtools, persist } from "zustand/middleware";
 interface State {
   token: string;
   profile: any;
+  isAuth: boolean;
 }
 
 interface Actions {
   setToken: (token: string) => void;
   setProfile: (profile: any) => void;
+  logOut: () => void;
 }
 
 const storeAPIAuth: StateCreator<
@@ -17,11 +19,13 @@ const storeAPIAuth: StateCreator<
 > = (set) => ({
   token: "",
   profile: "",
-  setToken: (token: string) => set({ token }),
+  isAuth: false,
+  setToken: (token: string) => set({ token: token, isAuth: true }),
   setProfile: (profile: any) =>
     set((state) => ({
       profile: profile,
     })),
+  logOut: () => set({ token: "", isAuth: false }),
 });
 
 export const useAuthStore = create<State & Actions>()(

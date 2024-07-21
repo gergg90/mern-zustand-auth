@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { useAuthStore } from "@/stores/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import z from "zod";
 
 const formSchema = z.object({
@@ -25,6 +26,7 @@ const formSchema = z.object({
 function LoginPage() {
   const setToken = useAuthStore((state) => state.setToken);
   const setProfile = useAuthStore((state) => state.setProfile);
+  const navigate = useNavigate();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -39,11 +41,13 @@ function LoginPage() {
     const resLogin = await loginRequest(email, password);
     const fetchToken = resLogin.data.token;
 
+    setToken(fetchToken);
+
     const resProfile = await profileRequest();
 
     setProfile(resProfile.data.profile);
 
-    setToken(fetchToken);
+    navigate("/profile");
   };
 
   return (
